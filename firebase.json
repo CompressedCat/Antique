@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "public",  // change to "build" if using React or another framework
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
