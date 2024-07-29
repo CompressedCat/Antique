@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498461764225",
+    "project_id": "antiqueproject-646c2",
+    "storage_bucket": "gs://antiqueproject-646c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498461764225:android:9dec7cb6885bd460a83b80",
+        "android_client_info": {
+          "package_name": "com.example.antiqueproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG5jFLsrlFeZ1ictxF4sBdLDuCbc1D4ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "2"
+}

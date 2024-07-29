@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Antique Community Mobile App">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcrhiUbx2CaC7lVh8JepvgZDiN7H83t70"></script>
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="antiqueproject">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>antiqueproject</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging.js"></script>
+
+  <script>
+    // TODO: Replace the following with your app's Firebase project configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAG5jFLsrlFeZ1ictxF4sBdLDuCbc1D4ms",
+
+
+      projectId: "antiqueproject-646c2",
+      storageBucket: "gs://antiqueproject-646c2.appspot.com",
+      messagingSenderId: "498461764225",
+      appId: "1:498461764225:android:9dec7cb6885bd460a83b80",
+      measurementId: "G-TZCFN8X2PH"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firebase Messaging
+    const messaging = firebase.messaging();
+
+    // Request permission and get token
+    messaging.requestPermission().then(() => {
+      return messaging.getToken();
+    }).then((token) => {
+      console.log('Token:', token);
+    }).catch((error) => {
+      console.error('Error getting permission:', error);
+    });
+
+    // Handle incoming messages
+    messaging.onMessage((payload) => {
+      console.log('Message received:', payload);
+      // Display notification or handle payload
+    });
+
+    // Background message handler
+    messaging.setBackgroundMessageHandler((payload) => {
+      console.log('Background message received:', payload);
+      // Customize notification here
+      const notificationTitle = payload.notification.title;
+      const notificationOptions = {
+        body: payload.notification.body,
+        icon: '/firebase-logo.png'
+      };
+
+      return self.registration.showNotification(notificationTitle, notificationOptions);
+    });
+  </script>
+</head>
+<body>
+<script src="flutter_bootstrap.js" async></script>
+<script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
